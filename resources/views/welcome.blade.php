@@ -36,7 +36,7 @@
 
     
     <!-- You can add a redirect link here after login -->
-    <a href="{{ route('login') }}" class="nav-link">Login</a>
+    <a href="{{ route('login') }}" class="nav-link">Admin Login</a>
 </div>
     
                     </div>
