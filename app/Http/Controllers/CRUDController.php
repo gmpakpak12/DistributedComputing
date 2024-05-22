@@ -26,7 +26,8 @@ class CRUDController extends Controller
             'course' => 'required',
             
         ]);
-
+        //$data['last_seen'] = now();
+        //Student::create($data);
         $newstudent = student::create($data);
         return redirect(route('student.index'));
     }
@@ -41,7 +42,8 @@ class CRUDController extends Controller
             'course' => 'required',
             
         ]);
-
+        $data['last_seen'] = now();
+        //$student->update($data);       
         $student->update($data);
         return redirect(route('student.index'))->with('success','Updated Successfully');
     }

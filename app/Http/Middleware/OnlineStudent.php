@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Middleware;
 
 
@@ -17,18 +18,15 @@ class OnlineStudent
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
-     */
+     **/
 
      public function handle(Request $request, Closure $next)
      {
          if(Auth::check()){
              $expireAt = now()->addMinutes(2);
              Cache::put("student-is-online-" .Auth::id(),true,$expireAt);
-             student::where("id", Auth::id())->update(['last_seen' => now()]);
+             Student::where("id", Auth::id())->update(['last_seen' => now()]);
          }
          return $next($request);
-     }
-    
-    
-    
+     }      
 }

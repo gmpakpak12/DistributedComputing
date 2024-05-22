@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStudentTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -20,8 +20,10 @@ class CreateStudentTable extends Migration
             $table->string('year_section', 10); // Adjust max length if needed
             $table->string('course');
             $table->timestamps();
+            $table->timestamp('last_seen')->nullable();
         });
     }
+
 
     /**
      * Reverse the migrations.
@@ -30,6 +32,6 @@ class CreateStudentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students');
+        //
     }
-}
+};

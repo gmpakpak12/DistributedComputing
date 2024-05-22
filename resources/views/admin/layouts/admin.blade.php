@@ -158,15 +158,18 @@
                                     <td>{{$student->student_id}}</td>
                                     <td>{{ \Carbon\Carbon::parse($student->last_seen)->diffForHumans() }}</td>
                                     <td>
-                                        @if(Cache::has('student-is-online-'.$student->id))
-                                        <span class="text-center">
+                                    @php
+                                        $isCacheEntryPresent = Cache::has('student-is-online-' . $student->id);
+                                    @endphp
+                                        @if($isCacheEntryPresent)
+                                        <span class="text-center online">
                                             <font color="green">Online</font>
                                         </span>
-                                        @else()
-                                        <span class="text-center">
+                                        @else
+                                        <span class="text-center offline">
                                             <font color="red">Offline</font>
                                         </span>
-                                        @endif()
+                                        @endif
                                     </td>
                                 </tr>
 

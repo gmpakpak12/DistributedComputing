@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CRUDController;
 use App\Http\Controllers\StudentController;
+use App\Http\Middleware\OnlineStudent;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,8 +23,9 @@ Route::get('/', function () {
 
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/student', [App\Http\Controllers\CRUDController::class, 'index'])->name('student.index')->middleware(['web', 'auth', 'OnlineStudent']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(['web', 'auth', 'OnlineStudent']);
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 Route::get('/admin/CRUD', [AdminController::class, 'CRUD'])->name('admin.CRUD')->middleware('is_admin');
 

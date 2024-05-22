@@ -43,6 +43,10 @@ return [
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
+        ], 
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'users',
         ],
     
         'student' => [
