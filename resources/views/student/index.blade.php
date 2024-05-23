@@ -119,7 +119,15 @@
 
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add record</button>
                             </a>
-
+                            @csrf  @if ($errors->any())
+                                <div class="alert alert-danger" role="alert">
+                                    <ul>
+                                     @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         </div>
 
 

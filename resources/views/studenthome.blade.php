@@ -7,7 +7,8 @@
     </head>
 <body>
 <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><i class="fa-solid fa-power-off  align-middle me-1"></i>
+                                                     document.getElementById('logout-form').submit();">
+                                                     <!--<i class="fa-solid fa-power-off  align-middle me-1"></i>-->
                                 {{ __('Logout') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">

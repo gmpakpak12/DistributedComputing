@@ -24,15 +24,23 @@ class CRUDController extends Controller
 
     public function store(Request $request)
 {
-    $request->validate([
-        'name' => 'required|unique:students,name',
-        'student_id' => 'required|unique:students,student_id',
+    $studentId = $request->input('student_id');
+    $duplicateExists = Student::where('student_id', $studentId)->exists();
+
+    if ($duplicateExists) {
+        // Handle duplicate case (display error in modal)
+        return back()->withErrors(['student_id' => 'This student ID already exists!']);
+    }
+
+    $data = $request->validate([
+        'name' => 'required',
+        // Remove unique rule for student_id
+        'student_id' => 'required',
         'year_section' => 'required',
         'course' => 'required',
     ]);
 
-    $newstudent = student::create($request->all());
-
+    $newStudent = Student::create($data);
     return redirect(route('student.index'));
 }
     public function edit(student $student){

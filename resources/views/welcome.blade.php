@@ -64,8 +64,8 @@
                 <form method="GET" action="{{ route('search-student') }}">
     <label for="student_id">Student ID:</label>
     <input type="text" id="student_id" name="student_id" required>
-
-    <button type="submit"><i class="fa fa-search"></i></button>
+    <button type="submit">Login</i></button>
+    <!--<button type="submit"><i class="fa fa-search"></i></button>-->
 </form>
 
 @if (session()->has('error'))
