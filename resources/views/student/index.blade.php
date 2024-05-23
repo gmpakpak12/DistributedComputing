@@ -120,7 +120,7 @@
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add record</button>
                             </a>
                             @csrf  @if ($errors->any())
-                                <div class="alert alert-danger" role="alert">
+                                <div style="position: absolute; top: 15%; left: 50%; transform: translate(-50%, -50%);"class="alert alert-danger text-center" role="alert">
                                     <ul>
                                      @foreach ($errors->all() as $error)
                                             <li>{{ $error }}</li>
